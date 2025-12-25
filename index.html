@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Popup Demo</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            font-size: 16px;
+        }
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            max-width: 90%;
+        }
+        .modal-header {
+            background: linear-gradient(to right, #ff69b4, #ffe6cc);
+            color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .modal-header h2 {
+            margin: 0;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .modal-footer button {
+            background: linear-gradient(to right, #ff69b4, #ffe6cc);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-footer button:hover {
+            opacity: 0.8;
+        }
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(to right, #ff69b4, #ffe6cc);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        /* Animation Styles */
+        .animate {
+            animation: animate 0.5s;
+        }
+        @keyframes animate {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger modal -->
+    <button class="btn" id="open-modal">Open Modal</button>
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content animate">
+            <div class="modal-header">
+                <h2>Modal Title</h2>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get modal and button elements
+        const modal = document.getElementById('modal');
+        const openModalBtn = document.getElementById('open-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        // Add event listeners
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('show');
+        });
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+        // Add event listener to modal background
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
